@@ -1,5 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import status
+from pycoingecko import CoinGeckoAPI
+cg = CoinGeckoAPI()
 
 
 def save_user(data):
@@ -15,3 +17,7 @@ def save_user(data):
             file.write(data['email'])
         file.close()
         return Response("Email has been successfully registered!", status=status.HTTP_200_OK)
+
+
+def calculate_btc_rate():
+    return cg.get_price(ids='bitcoin', vs_currencies='uah')['bitcoin']['uah']

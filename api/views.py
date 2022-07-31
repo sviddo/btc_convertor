@@ -3,10 +3,12 @@ from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 from .forms import AddEmailForm
 from .services import (
-    save_user, 
+    calculate_btc_rate,
+    save_user,
 )
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework import status
 import requests
 
 
@@ -31,3 +33,24 @@ def subscribe_api(request):
     form = AddEmailForm(request.data)
     resp = save_user(form.data)
     return Response(resp.data, status=resp.status_code)
+
+
+@api_view(["GET"])
+def get_rate(request):
+    """handler of '/api/rate' endpoint sending request on '/api/rate_api' one
+    and returning result to user in browser"""
+
+    response = requests.get("http://0.0.0.0:80/api/rate_api")
+    
+    return JsonResponse(response.text, safe=False)
+
+
+@api_view(["GET"])
+def get_rate_api(request):
+    """handler of '/api/rate_api' endpoint return actual BTC to UAH rate"""
+
+    try:
+        result = calculate_btc_rate()
+        return Response(f"1 BTC = {result} UAH", status=status.HTTP_200_OK)
+    except:
+        return Response("Invalid status value", status=status.HTTP_400_BAD_REQUEST)
