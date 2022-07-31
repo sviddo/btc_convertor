@@ -1,3 +1,4 @@
+import requests
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
@@ -5,11 +6,11 @@ from .forms import AddEmailForm
 from .services import (
     calculate_btc_rate,
     save_user,
+    send_email,
 )
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-import requests
 
 
 @require_http_methods(["GET", "POST"])
@@ -54,3 +55,25 @@ def get_rate_api(request):
         return Response(f"1 BTC = {result} UAH", status=status.HTTP_200_OK)
     except:
         return Response("Invalid status value", status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["GET"])
+def send_emails(request):
+    """handler of '/api/send_emails' endpoint 
+    sending request on '/api/send_emails_api' one and returning result to browser"""
+
+    response = requests.get("http://0.0.0.0:80/api/send_emails_api")
+    return JsonResponse(response.text, safe=False)
+
+
+@api_view(["GET"])
+def send_emails_api(request):
+    """handler of '/api/send_emails_api' endpoint sending emails to all users listed in 'users.txt' file"""
+
+    with open('users.txt') as file:
+        lines = [line.rstrip() for line in file]
+    file.close()
+    for line in lines:
+        send_email(line)
+
+    return Response("Emails have been sent!", status=status.HTTP_200_OK)
