@@ -16,7 +16,7 @@ def save_user(data):
     file.close()
 
     if data['email'] in lines:
-        return Response("Email is already registered!", status=status.HTTP_400_BAD_REQUEST)
+        return Response("Email is already registered!", status=status.HTTP_409_CONFLICT)
     else:
         with open("users.txt", "a") as file:
             file.write("\n")
