@@ -22,7 +22,7 @@ Find more info [here]()
 git clone https://github.com/sviddo/btc_convertor.git
 cd btc_convertor
 docker build -t django-app . 
-docker run -p 8000:80 app 
+docker run -p 8000:80 django-app 
 ```
 After that follow next links to see the functionality of service (for browsers):
 1. [http://127.0.0.1:8000/api/subscribe](http://127.0.0.1:8000/api/subscribe)
