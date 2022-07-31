@@ -31,7 +31,7 @@ After that follow next links to see the functionality of service (for browsers):
 
 or use any API service (e.g. Postman):
 
-[Endpoint collection](https://www.getpostman.com/collections/f930686f5aada88625b9)
+[Endpoint collection](https://www.postman.com/sviddo/workspace/btc-to-uah/collection/21140281-d01b3b2f-8601-4af6-8c22-a3200274e306?action=share&creator=21140281)
 
 
 Trird-party libraries used in project:
