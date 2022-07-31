@@ -29,7 +29,7 @@ After that follow next links to see the functionality of service (for browsers):
 2. [http://127.0.0.1:8000/api/rate](http://127.0.0.1:8000/api/rate)
 3. [http://127.0.0.1:8000/api/send_emails](http://127.0.0.1:8000/api/send_emails)
 
-or use any API service (e.g. Postman):
+or use any API service (e.g. Postman **needed Desktop version**):
 
 [Endpoint collection](https://www.postman.com/sviddo/workspace/btc-to-uah/collection/21140281-d01b3b2f-8601-4af6-8c22-a3200274e306?action=share&creator=21140281)
 
