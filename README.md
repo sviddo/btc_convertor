@@ -15,7 +15,7 @@ Service consists of 6 endpoints:
    
    ***!!! All sent emails you can find in ["All mail"](https://im.ge/i/FPddUp) or ["Spam"](https://im.ge/i/FPq0SM) folder in gmail ([https://mail.google.com](https://mail.google.com)). They looks [such](https://im.ge/i/FPqdKz)***
    
-Find more info [here]()
+Find more info [https://coxit.stoplight.io/docs/btc-to-uah-convertor/](https://coxit.stoplight.io/docs/btc-to-uah-convertor/)
 
 **How to run the application? Follow next steps:**
 ```
